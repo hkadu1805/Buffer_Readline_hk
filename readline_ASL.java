@@ -15,14 +15,13 @@ var payloadRecordCount = 0;
 
 var search_word = @search_word;
 
-<for> var line = buffer.nextlong() <comma/> line != null <comma/> line = buffer.nextlong()
+<for> var line = buffer.readLine() <comma/> line != null <comma/> line = buffer.readLine()
 	<do>
-		<for> var index = line.indexOf(search_word) <comma/> index &gt; -1 <comma/> index = line.indexOf(search_word)
-			<do>
-				line = line.substring(index + search_word.length());
+		<if> line.contains(search_word)
+			<then>
 				payloadRecordCount++;
-			</do>
-		</for>
+			</then>
+		</if>
 	</do>
 </for>
 
