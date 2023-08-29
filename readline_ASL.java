@@ -14,14 +14,20 @@ var buffer = new("java.io.BufferedReader",inStreamReader);
 var payloadRecordCount = 0;
 
 var search_word = @search_word;
+var searchWordLength = search_word.length();
 
 <for> var line = buffer.readLine() <comma/> line != null <comma/> line = buffer.readLine()
 	<do>
-		<if> line.contains(search_word)
-			<then>
-				payloadRecordCount++;
-			</then>
-		</if>
+		var lineLength = line.length();
+		<for> var i = 0 <comma/> i &lte lineLength - wordLength <comma/> i++
+			<do>
+				<if> line.substring(i, i + searchWordLength).equals(search_word)
+					<then>
+						payloadRecordCount++;
+					</then>
+				</if>
+			</do>
+		</for>
 	</do>
 </for>
 
