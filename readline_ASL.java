@@ -19,7 +19,7 @@ var searchWordLength = search_word.length();
 <for> var line = buffer.readLine() <comma/> line != null <comma/> line = buffer.readLine()
 	<do>
 		var lineLength = line.length();
-		<for> var i = 0 <comma/> i &lte lineLength - wordLength <comma/> i++
+		<for> var i = 0 <comma/> i &lt; (lineLength - wordLength + 1) <comma/> i++
 			<do>
 				<if> line.substring(i, i + searchWordLength).equals(search_word)
 					<then>
